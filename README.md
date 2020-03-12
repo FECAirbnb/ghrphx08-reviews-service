@@ -4,10 +4,10 @@
 
 ## Related Projects
 
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
-- https://github.com/teamName/repo
+- https://github.com/StayKay/proxy-server
+- https://github.com/StayKay/photo-gallery
+- https://github.com/StayKay/availability-service
+- https://github.com/StayKay/reviews-service
 
 ## Table of Contents
 
@@ -17,7 +17,9 @@
 
 ## Usage
 
-> Some usage instructions
+- [ ] npm install -g webpack
+- [ ] npm install
+- [ ] npm run db:setup
 
 ## Requirements
 
@@ -28,11 +30,12 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Development
 
-### Installing Dependencies
+### Getting Started
 
 From within the root directory:
 
 ```sh
-npm install -g webpack
-npm install
+- [ ] npm install -g webpack
+- [ ] npm install
+- [ ] npm run db:setup
 ```

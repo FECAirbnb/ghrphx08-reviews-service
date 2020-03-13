@@ -62,21 +62,3 @@ Location.belongsTo(Review);
 Review.sync({ force: true }).then(() => {
   Review.bulkCreate(reviewSampleData);
 });
-
-// User.sync({ force: true }).then(() => {
-//   userSampleData.map(async person => {
-//     User.create(person);
-//   });
-// });
-
-// Location.sync({ force: true }).then(() => {
-//   locationSampleData.map(async location => {
-//     await Location.create(location);
-//   });
-// });
-
-// Review.sync({ force: true }).then(() => {
-//   reviewSampleData.map(async review => {
-//     await Review.create(review);
-//   });
-// });

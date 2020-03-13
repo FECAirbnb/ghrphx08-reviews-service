@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       allReviews: [],
       reviewToRender: null,
-      locationId: 1
+      locationId: 5
     };
     this.renderComponent = this.renderComponent.bind(this);
   }

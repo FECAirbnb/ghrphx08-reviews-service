@@ -546,32 +546,56 @@ const reviewSampleData = [
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body:
       'I am more then happy for having the possibility having Andrea as a host. The place was clean as if it hasn’t been touched. With ease, we made all arrangements and experienced no problems in communicating. Andrea was sensible, behaving with natural respect. I would be delighted to have the him as a host again any time.',
-    locationId: 2,
+    locationId: 1,
     userId: 5
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body:
       'It was my pleasure staying here. I felt like it was my house, communication ran smoothly, and most importantly, they are friendly! I would gladly stay here him again.',
-    locationId: 2,
+    locationId: 1,
     userId: 6
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 6,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 6,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 6,
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
@@ -601,193 +625,187 @@ const reviewSampleData = [
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 7,
+    locationId: 2,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 16,
+    locationId: 3,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 16,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 16,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 16,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 16,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 4,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 1,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 6,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 6,
-    userId: fake.random.number({ min: 17, max: 50 })
-  },
-  {
-    review_date: fake.date.between('2019-01-01', '2020-05-01'),
-    review_body: fake.lorem.paragraph(),
-    locationId: 6,
+    locationId: 5,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
@@ -823,67 +841,109 @@ const reviewSampleData = [
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
+    locationId: 6,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 6,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 6,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
     locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   },
   {
     review_date: fake.date.between('2019-01-01', '2020-05-01'),
     review_body: fake.lorem.paragraph(),
-    locationId: 8,
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
+    userId: fake.random.number({ min: 17, max: 50 })
+  },
+  {
+    review_date: fake.date.between('2019-01-01', '2020-05-01'),
+    review_body: fake.lorem.paragraph(),
+    locationId: 1,
     userId: fake.random.number({ min: 17, max: 50 })
   }
 ];

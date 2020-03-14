@@ -5,58 +5,66 @@
 import React from 'react';
 
 const StarRating = ({
-  ratings: { overall, cleanliness, communication, checkin, accuracy, location, value }
+  ratings: { overall, cleanliness, communication, checkin, accuracy, location, value },
+  numberOfReviews
 }) => {
   return (
-    <div id="star-rating-bars">
-      <div className="rating-bar">
-        Overall
-        <div className="progress-bar">
-          <div style={{ width: `${overall * 2}em` }} />
-        </div>
-        <span>{overall}</span>
+    <div>
+      <div id="rating-average">
+        <span>
+          <img
+            id="star-image"
+            src="https://i.dlpng.com/static/png/375530_preview.png"
+            width="20px"
+            height="20px"
+            alt="star"
+          />
+          {overall} ({numberOfReviews} reviews)
+        </span>
       </div>
-      <div className="rating-bar">
-        Cleanliness
-        <div className="progress-bar">
-          <div style={{ width: `${cleanliness * 2}em` }} />
+      <div id="star-rating-bars">
+        <div className="rating-bar">
+          <span className="rating-titles">Cleanliness</span>
+          <span className="rating-value">{cleanliness}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${cleanliness * 2}em` }} />
+          </div>
         </div>
-        <span>{cleanliness}</span>
-      </div>
-      <div className="rating-bar">
-        Communication
-        <div className="progress-bar">
-          <div style={{ width: `${communication * 2}em` }} />
+        <div className="rating-bar">
+          <span className="rating-titles">Communication</span>
+          <span className="rating-value">{communication}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${communication * 2}em` }} />
+          </div>
         </div>
-        <span>{communication}</span>
-      </div>
-      <div className="rating-bar">
-        Check-in
-        <div className="progress-bar">
-          <div style={{ width: `${checkin * 2}em` }} />
+        <div className="rating-bar">
+          <span className="rating-titles">Check-in</span>
+          <span className="rating-value">{checkin}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${checkin * 2}em` }} />
+          </div>
         </div>
-        <span>{checkin}</span>
-      </div>
-      <div className="rating-bar">
-        Accuracy
-        <div className="progress-bar">
-          <div style={{ width: `${accuracy * 2}em` }} />
+        <div className="rating-bar">
+          <span className="rating-titles">Accuracy</span>
+          <span className="rating-value">{accuracy}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${accuracy * 2}em` }} />
+          </div>
         </div>
-        <span>{accuracy}</span>
-      </div>
-      <div className="rating-bar">
-        Location
-        <div className="progress-bar">
-          <div style={{ width: `${location * 2}em` }} />
+        <div className="rating-bar">
+          <span className="rating-titles">Location</span>
+          <span className="rating-value">{location}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${location * 2}em` }} />
+          </div>
         </div>
-        <span>{location}</span>
-      </div>
-      <div className="rating-bar">
-        Value
-        <div className="progress-bar">
-          <div style={{ width: `${value * 2}em` }} />
+        <div className="rating-bar">
+          <span className="rating-titles">Value</span>
+          <span className="rating-value">{value}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${value * 2}em` }} />
+          </div>
         </div>
-        <span>{value}</span>
       </div>
     </div>
   );

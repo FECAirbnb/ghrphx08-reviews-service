@@ -82,6 +82,7 @@ class App extends React.Component {
         location: 0,
         value: 0
       };
+
       this.state.reviewToRender.forEach(review => {
         locationRatings.overall += review.overall_star_rating;
         locationRatings.cleanliness += review.cleanliness_rating;
@@ -96,7 +97,7 @@ class App extends React.Component {
         locationRatings[ratingTitle] = (locationRatings[ratingTitle] / numberOfReviews).toFixed(2);
       }
 
-      return <StarRating ratings={locationRatings} />;
+      return <StarRating ratings={locationRatings} numberOfReviews={numberOfReviews} />;
     }
   }
 

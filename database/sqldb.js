@@ -8,22 +8,18 @@ const sequelize = new Sequelize('Airbnb', 'root', 'password', {
   dialect: 'mysql'
 });
 
-// user sample data
-
 // User model
 const User = sequelize.define('users', {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
   first_name: { type: Sequelize.STRING },
   profile_picture: { type: Sequelize.STRING },
-  join_date: { type: Sequelize.DATEONLY },
+  join_date: { type: Sequelize.STRING },
   is_host: { type: Sequelize.BOOLEAN },
   is_superhost: { type: Sequelize.BOOLEAN, allowNull: true },
   response_rate: { type: Sequelize.INTEGER, allowNull: true },
   response_time: { type: Sequelize.STRING, allowNull: true },
   accommodation_bio: { type: Sequelize.STRING, allowNull: true }
 });
-
-// location sample data
 
 // Location model
 const Location = sequelize.define('locations', {
@@ -33,17 +29,20 @@ const Location = sequelize.define('locations', {
   userId: { type: Sequelize.INTEGER }
 });
 
-// reviews sample data
-
 // review model
 const Review = sequelize.define('reviews', {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-  review_date: { type: Sequelize.DATEONLY },
+  review_date: { type: Sequelize.STRING },
   review_body: { type: Sequelize.TEXT },
+  overall_star_rating: { type: Sequelize.INTEGER },
+  cleanliness_rating: { type: Sequelize.INTEGER },
+  communication_rating: { type: Sequelize.INTEGER },
+  check_in_rating: { type: Sequelize.INTEGER },
+  accuracy_rating: { type: Sequelize.INTEGER },
+  location_rating: { type: Sequelize.INTEGER },
+  value_rating: { type: Sequelize.INTEGER },
   userId: { type: Sequelize.INTEGER },
   locationId: { type: Sequelize.INTEGER }
-  // location_id: { type: Sequelize.INTEGER },
-  // userId
 });
 
 User.hasMany(Location);

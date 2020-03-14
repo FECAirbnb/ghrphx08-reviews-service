@@ -77,7 +77,7 @@ class App extends React.Component {
         overall: 0,
         cleanliness: 0,
         communication: 0,
-        checkIn: 0,
+        checkin: 0,
         accuracy: 0,
         location: 0,
         value: 0
@@ -86,14 +86,14 @@ class App extends React.Component {
         locationRatings.overall += review.overall_star_rating;
         locationRatings.cleanliness += review.cleanliness_rating;
         locationRatings.communication += review.communication_rating;
-        locationRatings.checkIn += review.check_in_rating;
+        locationRatings.checkin += review.check_in_rating;
         locationRatings.accuracy += review.accuracy_rating;
         locationRatings.location += review.location_rating;
         locationRatings.value += review.value_rating;
       });
 
       for (const ratingTitle in locationRatings) {
-        locationRatings[ratingTitle] = Math.ceil(locationRatings[ratingTitle] / numberOfReviews);
+        locationRatings[ratingTitle] = (locationRatings[ratingTitle] / numberOfReviews).toFixed(2);
       }
 
       return <StarRating ratings={locationRatings} />;

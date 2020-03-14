@@ -24,7 +24,7 @@ class App extends React.Component {
     this.state = {
       allReviews: [],
       reviewToRender: null,
-      locationId: 5
+      locationId: 6
     };
     this.renderReviewComponent = this.renderReviewComponent.bind(this);
     this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
@@ -50,12 +50,6 @@ class App extends React.Component {
       });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.reviewToRender !== this.state.reviewToRender) {
-  //     this.average();
-  //   }
-  // }
-
   renderReviewComponent() {
     if (this.state.reviewToRender === null) {
       return <div>No Reviews</div>;
@@ -63,10 +57,11 @@ class App extends React.Component {
     let reviewDisplayLimit = 6;
     return this.state.reviewToRender.map((review, mapKey) => {
       reviewDisplayLimit -= 1;
-      if (reviewDisplayLimit !== 0) {
+      if (reviewDisplayLimit >= 0) {
         return <Reviews review={review} key={mapKey} />;
+      } else {
+        return;
       }
-      return;
     });
   }
 

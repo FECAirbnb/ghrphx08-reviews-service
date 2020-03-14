@@ -1,10 +1,26 @@
+/* eslint-disable no-console */
 /* eslint-disable camelcase */
+const mysql = require('mysql');
 const Sequelize = require('sequelize');
 const { userSampleData } = require('./mockData.js');
 const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
+const connect = mysql.createConnection({
+  user: 'root',
+  password: 'password'
+});
 
-const sequelize = new Sequelize('Airbnb', 'root', 'password', {
+connect.connect(err => {
+  if (err) throw err;
+  console.log('Connected');
+  connect.query('CREATE DATABASE IF NOT EXISTS StayKay', error => {
+    if (error) throw error;
+    console.log('Database Created');
+    connect.end();
+  });
+});
+
+const sequelize = new Sequelize('StayKay', 'root', 'password', {
   dialect: 'mysql'
 });
 
@@ -47,17 +63,29 @@ const Review = sequelize.define('reviews', {
 
 User.hasMany(Location);
 
-User.sync({ force: true }).then(() => {
-  User.bulkCreate(userSampleData);
-});
+User.sync({ force: true })
+  .then(() => {
+    User.bulkCreate(userSampleData);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
-Location.sync({ force: true }).then(() => {
-  Location.bulkCreate(locationSampleData);
-});
+Location.sync({ force: true })
+  .then(() => {
+    Location.bulkCreate(locationSampleData);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 User.belongsTo(Review);
 Location.belongsTo(Review);
 
-Review.sync({ force: true }).then(() => {
-  Review.bulkCreate(reviewSampleData);
-});
+Review.sync({ force: true })
+  .then(() => {
+    Review.bulkCreate(reviewSampleData);
+  })
+  .catch(err => {
+    console.log(err);
+  });

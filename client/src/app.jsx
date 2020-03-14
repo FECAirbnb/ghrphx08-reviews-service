@@ -24,20 +24,10 @@ class App extends React.Component {
     this.state = {
       allReviews: [],
       reviewToRender: null,
-      locationId: 5,
-      reviewAverage: {
-        overall: null,
-        cleanliness: null,
-        communication: null,
-        checkin: null,
-        accuracy: null,
-        location: null,
-        value: null
-      }
+      locationId: 5
     };
     this.renderReviewComponent = this.renderReviewComponent.bind(this);
     this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
-    this.average = this.average.bind(this);
   }
 
   componentDidMount() {
@@ -55,9 +45,6 @@ class App extends React.Component {
       .then(result => {
         this.setState({ reviewToRender: result.data });
       })
-      .then(() => {
-        console.log(this.state);
-      })
       .catch(err => {
         console.log(err);
       });
@@ -68,45 +55,6 @@ class App extends React.Component {
   //     this.average();
   //   }
   // }
-
-  async average() {
-    const numberOfReviews = this.state.reviewToRender.length;
-    const locationRatings = {
-      overallStars: 0,
-      cleanlinessStars: 0,
-      communicationStars: 0,
-      checkInStars: 0,
-      accuracyStars: 0,
-      locationStars: 0,
-      valueStars: 0
-    };
-    this.state.reviewToRender.forEach(review => {
-      locationRatings.overallStars += review.overall_star_rating;
-      locationRatings.cleanlinessStars += review.cleanliness_rating;
-      locationRatings.communicationStars += review.communication_rating;
-      locationRatings.checkInStars += review.check_in_rating;
-      locationRatings.accuracyStars += review.accuracy_rating;
-      locationRatings.locationStars += review.location_rating;
-      locationRatings.valueStars += review.value_rating;
-    });
-    for (let key in locationRatings) {
-      locationRatings[key] = Math.ceil(locationRatings[key] / numberOfReviews);
-    }
-    await this.setState(
-      state => {
-        state.reviewAverage.overall = locationRatings.overallStars;
-        state.reviewAverage.cleanliness = locationRatings.cleanlinessStars;
-        state.reviewAverage.communication = locationRatings.communicationStars;
-        state.reviewAverage.checkin = locationRatings.checkInStars;
-        state.reviewAverage.accuracy = locationRatings.accuracyStars;
-        state.reviewAverage.location = locationRatings.locationStars;
-        state.reviewAverage.value = locationRatings.valueStars;
-      },
-      () => {
-        console.log(this.state.reviewAverage);
-      }
-    );
-  }
 
   renderReviewComponent() {
     if (this.state.reviewToRender === null) {
@@ -123,11 +71,32 @@ class App extends React.Component {
   }
 
   renderRatingsComponent() {
-    let val = Object.values(this.state.reviewAverage);
-    if (val.includes(null)) {
-      return <div>No stars</div>;
-    } else {
-      return <StarRating ratings={this.state.reviewAverage} />;
+    if (this.state.reviewToRender !== null) {
+      const numberOfReviews = this.state.reviewToRender.length;
+      const locationRatings = {
+        overall: 0,
+        cleanliness: 0,
+        communication: 0,
+        checkIn: 0,
+        accuracy: 0,
+        location: 0,
+        value: 0
+      };
+      this.state.reviewToRender.forEach(review => {
+        locationRatings.overall += review.overall_star_rating;
+        locationRatings.cleanliness += review.cleanliness_rating;
+        locationRatings.communication += review.communication_rating;
+        locationRatings.checkIn += review.check_in_rating;
+        locationRatings.accuracy += review.accuracy_rating;
+        locationRatings.location += review.location_rating;
+        locationRatings.value += review.value_rating;
+      });
+
+      for (const ratingTitle in locationRatings) {
+        locationRatings[ratingTitle] = Math.ceil(locationRatings[ratingTitle] / numberOfReviews);
+      }
+
+      return <StarRating ratings={locationRatings} />;
     }
   }
 

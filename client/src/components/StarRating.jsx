@@ -6,7 +6,6 @@ import React from 'react';
 const StarRating = ({
   ratings: { overall, cleanliness, communication, checkin, accuracy, location, value }
 }) => {
-  console.log(ratings, 'stringsig');
   return (
     <div id="star-rating-bars">
       <div className="overall-rating">Overall: {overall}</div>

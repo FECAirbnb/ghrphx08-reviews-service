@@ -104,6 +104,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div className="separation-line" />
         <div>{this.renderRatingsComponent()}</div>
         <div id="reviews">{this.renderReviewComponent()}</div>
       </div>

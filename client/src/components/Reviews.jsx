@@ -7,40 +7,39 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-// const Reviews = ({ review }) => {
-//   return (
-//     <div className="single-review">
-//       <div className="user-info">
-//         <img className="user-picture" src={review.profile_picture} width="50" height="50" />
-//         <div className="user-name">
-//           {review.first_name}
-//           <div className="review-date">{review.review_date}</div>
-//         </div>
-//       </div>
-//       <div className="review-info">
-//         <div className="review-body">
-//           <div>{review.review_body}</div>
-//           <a onClick={}>read more</a>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      limitedReview: `${this.props.review.review_body.slice(0, 140)}...`
+      limitedReviewGreaterThan200Chars: `${this.props.review.review_body.slice(0, 150)}..`,
+      limitedReviewLessThan200Chars: this.props.review.review_body
     };
-    // this.readMoreHandler = this.readMoreHandler.bind(this);
   }
 
   readMoreHandler(e) {
     e.preventDefault();
     const wholeReview = this.props.review.review_body;
-    this.setState({ limitedReview: wholeReview });
+    this.setState({ limitedReviewGreaterThan200Chars: wholeReview });
     e.target.style.display = 'none';
+  }
+
+  renderer() {
+    if (this.props.review.review_body.length <= 150) {
+      return <div>{this.state.limitedReviewLessThan200Chars}</div>;
+    }
+    return (
+      <div>
+        {this.state.limitedReviewGreaterThan200Chars}
+        <a
+          href=""
+          className="read-more-btn"
+          style={{ display: 'inline-block' }}
+          onClick={e => this.readMoreHandler(e)}
+        >
+          read more
+        </a>
+      </div>
+    );
   }
 
   render() {
@@ -60,17 +59,7 @@ class Reviews extends React.Component {
         </div>
         <div className="review-info">
           <div className="review-body">
-            <div>
-              {this.state.limitedReview}{' '}
-              <a
-                href=""
-                className="read-more-btn"
-                style={{ display: 'inline-block' }}
-                onClick={e => this.readMoreHandler(e)}
-              >
-                read more
-              </a>
-            </div>
+            <div>{this.renderer()}</div>
           </div>
         </div>
       </div>

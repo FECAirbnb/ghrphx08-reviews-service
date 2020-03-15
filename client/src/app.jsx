@@ -16,7 +16,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Reviews from './components/Reviews.jsx';
 import StarRating from './components/StarRating.jsx';
-import AllReviews from './components/AllReviews.jsx';
+import Popup from './components/Popup.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -25,11 +25,12 @@ class App extends React.Component {
     this.state = {
       allReviews: [],
       reviewToRender: null,
-      locationId: 5,
+      locationId: 1,
       showAllReviews: false
     };
-    this.renderReviewComponent = this.renderReviewComponent.bind(this);
-    this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
+    // this.renderReviewComponent = this.renderReviewComponent.bind(this);
+    // this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
+    this.allReviewsToggle = this.allReviewsToggle.bind(this);
   }
 
   componentDidMount() {
@@ -101,7 +102,7 @@ class App extends React.Component {
   renderAllReviewsButton() {
     if (this.state.reviewToRender !== null) {
       return (
-        <button type="button" onClick={e => this.allReviewsToggle(e)}>
+        <button id="show-all-reviews" type="button" onClick={e => this.allReviewsToggle(e)}>
           Show all {this.state.reviewToRender.length} reviews
         </button>
       );
@@ -110,8 +111,8 @@ class App extends React.Component {
 
   allReviewsToggle(e) {
     e.preventDefault();
-    this.setState(state => {
-      state.showAllReviews = !state.showAllReviews;
+    this.setState({
+      showAllReviews: !this.state.showAllReviews
     });
   }
 
@@ -121,7 +122,13 @@ class App extends React.Component {
         <div className="separation-line" />
         <div>{this.renderRatingsComponent()}</div>
         <div id="reviews">{this.renderReviewComponent()}</div>
-        <button type="button">Show All Reviews</button>
+        {this.renderAllReviewsButton()}
+        {this.state.showAllReviews ? (
+          <Popup
+            reviewToRender={this.state.reviewToRender}
+            allReviewsToggle={this.allReviewsToggle}
+          />
+        ) : null}
       </div>
     );
   }

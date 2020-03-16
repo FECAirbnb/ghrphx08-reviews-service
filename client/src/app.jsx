@@ -16,45 +16,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Reviews from './components/Reviews.jsx';
 import StarRating from './components/StarRating.jsx';
+import Popup from './components/Popup.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allReviews: [],
       reviewToRender: null,
-      locationId: 5
+      locationId: 5,
+      showAllReviews: false
     };
-    this.renderReviewComponent = this.renderReviewComponent.bind(this);
-    this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
+    // this.renderReviewComponent = this.renderReviewComponent.bind(this);
+    // this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
+    this.allReviewsToggle = this.allReviewsToggle.bind(this);
   }
 
   componentDidMount() {
     axios
-      .get('/api/reviews')
-      .then(result => {
-        this.setState({ allReviews: result.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
+        console.log('was this hit?');
         this.setState({ reviewToRender: result.data });
       })
       .catch(err => {
         console.log(err);
       });
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.reviewToRender !== this.state.reviewToRender) {
-  //     this.average();
-  //   }
-  // }
 
   renderReviewComponent() {
     if (this.state.reviewToRender === null) {
@@ -63,10 +51,11 @@ class App extends React.Component {
     let reviewDisplayLimit = 6;
     return this.state.reviewToRender.map((review, mapKey) => {
       reviewDisplayLimit -= 1;
-      if (reviewDisplayLimit !== 0) {
+      if (reviewDisplayLimit >= 0) {
         return <Reviews review={review} key={mapKey} />;
+      } else {
+        return;
       }
-      return;
     });
   }
 
@@ -101,12 +90,37 @@ class App extends React.Component {
     }
   }
 
+  renderAllReviewsButton() {
+    if (this.state.reviewToRender !== null) {
+      return (
+        <button id="show-all-reviews" type="button" onClick={e => this.allReviewsToggle(e)}>
+          Show all {this.state.reviewToRender.length} reviews
+        </button>
+      );
+    }
+  }
+
+  allReviewsToggle(e) {
+    e.preventDefault();
+    this.setState({
+      // eslint-disable-next-line react/no-access-state-in-setstate
+      showAllReviews: !this.state.showAllReviews
+    });
+  }
+
   render() {
     return (
       <div>
         <div className="separation-line" />
         <div>{this.renderRatingsComponent()}</div>
         <div id="reviews">{this.renderReviewComponent()}</div>
+        {this.renderAllReviewsButton()}
+        {this.state.showAllReviews ? (
+          <Popup
+            reviewToRender={this.state.reviewToRender}
+            allReviewsToggle={this.allReviewsToggle}
+          />
+        ) : null}
       </div>
     );
   }

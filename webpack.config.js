@@ -1,5 +1,8 @@
+/* eslint-disable no-path-concat */
+const path = require('path');
+
 module.exports = {
-  entry: __dirname + '/client/src/app.jsx',
+  entry: path.join(__dirname, '/client/src/app.jsx'),
   module: {
     rules: [
       {
@@ -16,6 +19,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/dist'
+    path: path.join(__dirname, '/client/public/dist')
   }
 };

@@ -7,7 +7,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-class Reviews extends React.Component {
+class AllReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +44,7 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div className="single-review">
+      <div className="all-reviews-display">
         <div className="user-info">
           <img
             className="user-picture"
@@ -58,7 +58,7 @@ class Reviews extends React.Component {
           </div>
         </div>
         <div className="review-info">
-          <div className="review-body">
+          <div className="all-review-body">
             <div>{this.renderer()}</div>
           </div>
         </div>
@@ -67,4 +67,4 @@ class Reviews extends React.Component {
   }
 }
 
-export default Reviews;
+export default AllReviews;

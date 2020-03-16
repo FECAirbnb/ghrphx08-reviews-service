@@ -1,4 +1,4 @@
-# Airbnb
+# StayKay
 
 > Project description
 
@@ -39,6 +39,10 @@ Go to http://localhost:3000
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+- MySQL
+- Sequelize
+- Express
+- Axios
+- React
 
 ## Development

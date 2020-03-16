@@ -11,25 +11,25 @@ class AllReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      limitedReviewGreaterThan200Chars: `${this.props.review.review_body.slice(0, 150)}..`,
-      limitedReviewLessThan200Chars: this.props.review.review_body
+      limitedReviewGreaterThan150Chars: `${this.props.review.review_body.slice(0, 150)}..`,
+      limitedReviewLessThan150Chars: this.props.review.review_body
     };
   }
 
   readMoreHandler(e) {
     e.preventDefault();
     const wholeReview = this.props.review.review_body;
-    this.setState({ limitedReviewGreaterThan200Chars: wholeReview });
+    this.setState({ limitedReviewGreaterThan150Chars: wholeReview });
     e.target.style.display = 'none';
   }
 
   renderer() {
     if (this.props.review.review_body.length <= 150) {
-      return <div>{this.state.limitedReviewLessThan200Chars}</div>;
+      return <div>{this.state.limitedReviewLessThan150Chars}</div>;
     }
     return (
       <div>
-        {this.state.limitedReviewGreaterThan200Chars}
+        {this.state.limitedReviewGreaterThan150Chars}
         <a
           href=""
           className="read-more-btn"
@@ -58,7 +58,7 @@ class AllReviews extends React.Component {
           </div>
         </div>
         <div className="review-info">
-          <div className="review-body">
+          <div className="all-review-body">
             <div>{this.renderer()}</div>
           </div>
         </div>

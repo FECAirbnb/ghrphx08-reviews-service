@@ -10,7 +10,7 @@ const AllReviewsStars = ({
 }) => {
   return (
     <div>
-      <div id="rating-average">
+      <div id="all-rating-average">
         <span>
           <img
             id="star-image"
@@ -27,42 +27,42 @@ const AllReviewsStars = ({
           <span className="all-reviews-star-title">Cleanliness</span>
           <span className="all-reviews-star-value">{cleanliness}</span>
           <div className="progress-bar-all-reviews">
-            <div style={{ width: `${cleanliness * 2}em` }} />
-          </div>
-        </div>
-        <div className="all-reviews-rating">
-          <span className="all-reviews-star-title">Communication</span>
-          <span className="all-reviews-star-value">{communication}</span>
-          <div className="progress-bar-all-reviews">
-            <div style={{ width: `${communication * 2}em` }} />
-          </div>
-        </div>
-        <div className="all-reviews-rating">
-          <span className="all-reviews-star-title">Check-in</span>
-          <span className="all-reviews-star-value">{checkin}</span>
-          <div className="progress-bar-all-reviews">
-            <div style={{ width: `${checkin * 2}em` }} />
+            <div style={{ width: `${cleanliness * 1.2}em` }} />
           </div>
         </div>
         <div className="all-reviews-rating">
           <span className="all-reviews-star-title">Accuracy</span>
           <span className="all-reviews-star-value">{accuracy}</span>
           <div className="progress-bar-all-reviews">
-            <div style={{ width: `${accuracy * 2}em` }} />
+            <div style={{ width: `${accuracy * 1.2}em` }} />
+          </div>
+        </div>
+        <div className="all-reviews-rating">
+          <span className="all-reviews-star-title">Communication</span>
+          <span className="all-reviews-star-value">{communication}</span>
+          <div className="progress-bar-all-reviews">
+            <div style={{ width: `${communication * 1.2}em` }} />
           </div>
         </div>
         <div className="all-reviews-rating">
           <span className="all-reviews-star-title">Location</span>
           <span className="all-reviews-star-value">{location}</span>
           <div className="progress-bar-all-reviews">
-            <div style={{ width: `${location * 2}em` }} />
+            <div style={{ width: `${location * 1.2}em` }} />
+          </div>
+        </div>
+        <div className="all-reviews-rating">
+          <span className="all-reviews-star-title">Check-in</span>
+          <span className="all-reviews-star-value">{checkin}</span>
+          <div className="progress-bar-all-reviews">
+            <div style={{ width: `${checkin * 1.2}em` }} />
           </div>
         </div>
         <div className="all-reviews-rating">
           <span className="all-reviews-star-title">Value</span>
           <span className="all-reviews-star-value">{value}</span>
           <div className="progress-bar-all-reviews">
-            <div style={{ width: `${value * 2}em` }} />
+            <div style={{ width: `${value * 1.2}em` }} />
           </div>
         </div>
       </div>

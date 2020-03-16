@@ -25,7 +25,7 @@ class App extends React.Component {
     this.state = {
       allReviews: [],
       reviewToRender: null,
-      locationId: 1,
+      locationId: 5,
       showAllReviews: false
     };
     // this.renderReviewComponent = this.renderReviewComponent.bind(this);
@@ -112,6 +112,7 @@ class App extends React.Component {
   allReviewsToggle(e) {
     e.preventDefault();
     this.setState({
+      // eslint-disable-next-line react/no-access-state-in-setstate
       showAllReviews: !this.state.showAllReviews
     });
   }

@@ -31,20 +31,6 @@ const StarRating = ({
           </div>
         </div>
         <div className="rating-bar">
-          <span className="rating-titles">Communication</span>
-          <span className="rating-value">{communication}</span>
-          <div className="progress-bar">
-            <div style={{ width: `${communication * 2}em` }} />
-          </div>
-        </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Check-in</span>
-          <span className="rating-value">{checkin}</span>
-          <div className="progress-bar">
-            <div style={{ width: `${checkin * 2}em` }} />
-          </div>
-        </div>
-        <div className="rating-bar">
           <span className="rating-titles">Accuracy</span>
           <span className="rating-value">{accuracy}</span>
           <div className="progress-bar">
@@ -52,10 +38,24 @@ const StarRating = ({
           </div>
         </div>
         <div className="rating-bar">
+          <span className="rating-titles">Communication</span>
+          <span className="rating-value">{communication}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${communication * 2}em` }} />
+          </div>
+        </div>
+        <div className="rating-bar">
           <span className="rating-titles">Location</span>
           <span className="rating-value">{location}</span>
           <div className="progress-bar">
             <div style={{ width: `${location * 2}em` }} />
+          </div>
+        </div>
+        <div className="rating-bar">
+          <span className="rating-titles">Check-in</span>
+          <span className="rating-value">{checkin}</span>
+          <div className="progress-bar">
+            <div style={{ width: `${checkin * 2}em` }} />
           </div>
         </div>
         <div className="rating-bar">

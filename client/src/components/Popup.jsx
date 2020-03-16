@@ -1,3 +1,6 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/destructuring-assignment */
@@ -37,7 +40,15 @@ class Popup extends React.Component {
       });
 
       for (const ratingTitle in locationRatings) {
-        locationRatings[ratingTitle] = (locationRatings[ratingTitle] / numberOfReviews).toFixed(2);
+        if (ratingTitle === 'overall') {
+          locationRatings[ratingTitle] = (locationRatings[ratingTitle] / numberOfReviews).toFixed(
+            2
+          );
+        } else {
+          locationRatings[ratingTitle] = (locationRatings[ratingTitle] / numberOfReviews).toFixed(
+            1
+          );
+        }
       }
 
       return <AllReviewsStars ratings={locationRatings} numberOfReviews={numberOfReviews} />;

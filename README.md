@@ -20,11 +20,19 @@
 From within the root directory, in your terminal run the following commands in order.
 - [ ] npm install
 - [ ] npm install -g webpack
-- [ ] npm run db:setup
+- [ ] npm run db:setup (if there is an error refer to database initialization below)
 - [ ] npm run react-dev
 - [ ] npm start
 
 Go to http://localhost:3000
+
+## Database initialization
+- [ ] open mysql in the terminal
+- [ ] use StayKay
+- [ ] show tables
+- If there are less than 3 tables, drop all tables with the command 'drop tables <tablename>, <tablename>....
+- [ ] Drop the database using 'drop database <database name>
+- [ ] Try the npm run db:setup again in your terminal.
 
 ## Requirements
 

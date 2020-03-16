@@ -23,7 +23,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allReviews: [],
       reviewToRender: null,
       locationId: 5,
       showAllReviews: false
@@ -35,17 +34,9 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get('/api/reviews')
-      .then(result => {
-        this.setState({ allReviews: result.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-
-    axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
+        console.log('was this hit?');
         this.setState({ reviewToRender: result.data });
       })
       .catch(err => {

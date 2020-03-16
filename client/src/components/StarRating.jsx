@@ -17,7 +17,7 @@ const StarRating = ({
             src="https://i.dlpng.com/static/png/375530_preview.png"
             width="20px"
             height="20px"
-            alt="star"
+            alt="not loaded"
           />
           {overall} ({numberOfReviews} reviews)
         </span>

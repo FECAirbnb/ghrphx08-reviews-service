@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const path = require('path');
 const model = require('./model/index.js');
 
-app.use(express.static(path.join(__dirname, '../client/dist/')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 app.get('/api/reviews/', (req, res) => {
   model.reviews.getAll().then(result => {

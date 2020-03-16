@@ -15,11 +15,16 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
+## Getting Started
 
-- [ ] npm install -g webpack
+From within the root directory, in your terminal run the following commands in order.
 - [ ] npm install
+- [ ] npm install -g webpack
 - [ ] npm run db:setup
+- [ ] npm run react-dev
+- [ ] npm start
+
+Go to http://localhost:3000
 
 ## Requirements
 
@@ -29,13 +34,3 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - etc
 
 ## Development
-
-### Getting Started
-
-From within the root directory:
-
-```sh
-- [ ] npm install -g webpack
-- [ ] npm install
-- [ ] npm run db:setup
-```

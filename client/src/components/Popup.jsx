@@ -63,7 +63,7 @@ class Popup extends React.Component {
           <button
             id="close-all-reviews"
             type="button"
-            onClick={e => this.props.allReviewsToggle(e)}
+            onClick={() => this.props.allReviewsToggle()}
           >
             x
           </button>

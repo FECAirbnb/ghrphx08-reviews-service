@@ -1,15 +1,18 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from '../../enzyme';
 
-import App from '../../app.jsx';
+import App from '../../app';
 
 describe('App component', () => {
   it('renders the app component', () => {
     const test = shallow(<App />);
   });
 
-  let wrapper = shallow(<App />);
-  beforeAll(() => {
+  const wrapper = shallow(<App />);
+  beforeEach(() => {
     wrapper.setState({ locationId: 5 });
     wrapper.setState({
       reviewToRender: [
@@ -190,6 +193,7 @@ describe('App component', () => {
         }
       ]
     });
+    wrapper.setState({ showAllReviews: false });
   });
 
   it('should have a location number as a state', () => {
@@ -198,5 +202,20 @@ describe('App component', () => {
 
   it('should have reveiws in the reviews to render state', () => {
     expect(wrapper.state('reviewToRender')).toHaveLength(7);
+  });
+
+  it('should have a show all reviews button', () => {
+    wrapper.find('button').text('Show all 7 reviews');
+  });
+
+  it('should change the state of showAllReviews on click of the show all button', () => {
+    wrapper.find('button').simulate('click');
+    expect(wrapper.state('showAllReviews')).toBeTruthy();
+    wrapper.find('button').simulate('click');
+    expect(wrapper.state('showAllReviews')).toBeFalsy();
+  });
+
+  it('should have 6 reviews under the reviews component that are rendered', () => {
+    expect(wrapper.find('#reviews').children().length).toBe(6);
   });
 });

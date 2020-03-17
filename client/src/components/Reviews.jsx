@@ -11,8 +11,7 @@ class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      limitedReviewGreaterThan150Chars: `${this.props.review.review_body.slice(0, 150)}..`,
-      limitedReviewLessThan150Chars: this.props.review.review_body
+      limitedReviewGreaterThan150Chars: `${this.props.review.review_body.slice(0, 150)} ... `
     };
   }
 
@@ -25,7 +24,7 @@ class Reviews extends React.Component {
 
   renderer() {
     if (this.props.review.review_body.length <= 150) {
-      return <div>{this.state.limitedReviewLessThan150Chars}</div>;
+      return <div>{this.props.review.review_body}</div>;
     }
     return (
       <div>

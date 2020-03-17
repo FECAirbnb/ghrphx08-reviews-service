@@ -2,9 +2,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react';
+// import $ from 'jquery';
 import { shallow } from '../../enzyme';
 
 import App from '../../app';
+
+// const sinon = require('sinon');
 
 describe('App component', () => {
   it('renders the app component', () => {
@@ -219,3 +222,22 @@ describe('App component', () => {
     expect(wrapper.find('#reviews').children().length).toBe(6);
   });
 });
+
+// describe('Ajax request for the app component', () => {
+//   jest.mock('jquery');
+
+//   const getReviews = (locationId, cb) => {
+//     $.ajax({
+//       url: `/api/reviews${locationId}`,
+//       success: data => {
+//         cb(null, data);
+//       }
+//     });
+//   };
+
+//   it('should make a get request for reviews', () => {
+//     sinon.replace($, 'ajax', sinon.fake());
+//     getReviews(1, sinon.fake());
+
+//   });
+// });

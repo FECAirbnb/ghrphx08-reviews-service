@@ -17,6 +17,7 @@ module.exports = {
       }
     ]
   },
+  plugins: ['@babel/plugin-transform-runtime'],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/client/public/dist')

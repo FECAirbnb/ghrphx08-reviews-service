@@ -18,6 +18,7 @@ import Reviews from './components/Reviews.jsx';
 import StarRating from './components/StarRating.jsx';
 import Popup from './components/Popup.jsx';
 import axios from 'axios';
+import $ from 'jquery';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -33,14 +34,22 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(`/api/reviews/${this.state.locationId}`)
-      .then(result => {
-        this.setState({ reviewToRender: result.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // axios
+    //   .get(`/api/reviews/${this.state.locationId}`)
+    //   .then(result => {
+    //     this.setState({ reviewToRender: result.data });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+    $.ajax({
+      type: 'GET',
+      url: `/api/reviews/${this.state.locationId}`,
+      success: result => {
+        console.log(result);
+        this.setState({ reviewToRender: result });
+      }
+    });
   }
 
   renderReviewComponent() {

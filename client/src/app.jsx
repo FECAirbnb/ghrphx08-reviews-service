@@ -19,7 +19,7 @@ import StarRating from './components/StarRating.jsx';
 import Popup from './components/Popup.jsx';
 import axios from 'axios';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,6 @@ class App extends React.Component {
     axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
-        console.log('was this hit?');
         this.setState({ reviewToRender: result.data });
       })
       .catch(err => {
@@ -87,6 +86,8 @@ class App extends React.Component {
       }
 
       return <StarRating ratings={locationRatings} numberOfReviews={numberOfReviews} />;
+    } else {
+      return <div>No star ratings</div>;
     }
   }
 
@@ -126,4 +127,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));

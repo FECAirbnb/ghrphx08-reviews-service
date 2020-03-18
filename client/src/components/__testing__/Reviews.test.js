@@ -63,5 +63,5 @@ describe('Reviews component', () => {
     expect(wrapper.exists('.review-body')).toBe(true);
     expect(wrapper.find('.review-body').text()).toEqual(sampleShorterReviewData.review_body);
   });
-  
+
 });

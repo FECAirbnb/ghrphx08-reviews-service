@@ -45,7 +45,6 @@ export default class App extends React.Component {
       type: 'GET',
       url: `/api/reviews/${this.state.locationId}`,
       success: result => {
-        console.log(result);
         this.setState({ reviewToRender: result });
       }
     });

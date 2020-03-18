@@ -11,7 +11,8 @@
     "test": "jest",
     "db:setup": "node ./database/sqldb.js",
     "start": "nodemon ./server/index.js",
-    "react-dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@babel/runtime": "^7.8.7",

@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from '../../enzyme';
-import Reviews from '../Reviews';
+import AllReviews from '../AllReviews';
 
-const sampleReviewData = {
+const sampleLongReviewData = {
   id: 17,
   review_date: 'June 2019',
   review_body:
@@ -21,47 +22,39 @@ const sampleShorterReviewData = {
   profile_picture: 'https://s3.amazonaws.com/uifaces/faces/twitter/xilantra/128.jpg'
 };
 
-describe('Reviews component', () => {
+describe('All the reviews component', () => {
+  it('should render', () => {
+    const testRender = shallow(<AllReviews review={sampleLongReviewData} />);
+  });
+
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Reviews review={sampleReviewData} />);
+    wrapper = shallow(<AllReviews review={sampleLongReviewData} />);
   });
 
-  it('should render a reviews component', () => {
-    // eslint-disable-next-line no-unused-vars
-    const test = shallow(<Reviews review={sampleReviewData} />);
-  });
-
-  it('should have state a review state', () => {
-    expect(wrapper.state('limitedReviewGreaterThan150Chars')).toBeTruthy();
-    expect(wrapper.state('limitedReviewGreaterThan150Chars')).toEqual(
-      `${sampleReviewData.review_body.slice(0, 150)} ... `
-    );
-  });
-
-  it('should have the correct element classes dividing up the review', () => {
-    expect(wrapper.find('.single-review').length).toBe(1);
-    expect(wrapper.find('.user-info').length).toBe(1);
-    expect(wrapper.find('.user-picture').length).toBe(1);
-    expect(wrapper.find('.user-name').length).toBe(1);
-    expect(wrapper.find('.review-date').length).toBe(1);
-    expect(wrapper.find('.review-info').length).toBe(1);
-    expect(wrapper.find('.review-body').length).toBe(1);
+  it('should have the correct components for a review', () => {
+    expect(wrapper.exists('.user-picture')).toBe(true);
+    expect(wrapper.exists('.user-name')).toBe(true);
+    expect(wrapper.exists('.user-info')).toBe(true);
+    expect(wrapper.exists('.review-date')).toBe(true);
+    expect(wrapper.exists('.review-info')).toBe(true);
+    expect(wrapper.exists('.all-review-body')).toBe(true);
+    expect(wrapper.exists('.read-more-btn')).toBe(true);
   });
 
   it('should change the state when read more event handler is clicked', () => {
     const preventDefault = jest.fn();
     expect(wrapper.state('limitedReviewGreaterThan150Chars')).toEqual(
-      `${sampleReviewData.review_body.slice(0, 150)} ... `
+      `${sampleLongReviewData.review_body.slice(0, 150)} ... `
     );
     wrapper.find('a').simulate('click', { preventDefault });
-    expect(wrapper.state('limitedReviewGreaterThan150Chars')).toEqual(sampleReviewData.review_body);
+    expect(wrapper.state('limitedReviewGreaterThan150Chars')).toEqual(
+      sampleLongReviewData.review_body
+    );
   });
 
-  it('should just return the whole review if it is less than 150 charactesr', () => {
-    wrapper = shallow(<Reviews review={sampleShorterReviewData} />);
-    expect(wrapper.exists('.review-body')).toBe(true);
-    expect(wrapper.find('.review-body').text()).toEqual(sampleShorterReviewData.review_body);
+  it('should render the entire review if it is equal to or less than 150 characters', () => {
+    wrapper = shallow(<AllReviews review={sampleShorterReviewData} />);
+    expect(wrapper.find('.all-review-body').text()).toEqual(sampleShorterReviewData.review_body);
   });
-  
 });

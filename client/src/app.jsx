@@ -13,13 +13,14 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Reviews from './components/Reviews.jsx';
 import StarRating from './components/StarRating.jsx';
 import Popup from './components/Popup.jsx';
 import axios from 'axios';
 
-class App extends React.Component {
+import $ from 'jquery';
+
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,15 +34,33 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // async function getReviews() {
+    //   await axios
+    //     .get(`/api/reviews/${this.state.locationId}`)
+    //     .then(result => {
+    //       this.setState({ reviewToRender: result.data });
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }
+    // getReviews();
+
     axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
-        console.log('was this hit?');
         this.setState({ reviewToRender: result.data });
       })
       .catch(err => {
         console.log(err);
       });
+    // $.ajax({
+    //   type: 'GET',
+    //   url: `/api/reviews/${this.state.locationId}`,
+    //   success: result => {
+    //     this.setState({ reviewToRender: result });
+    //   }
+    // });
   }
 
   renderReviewComponent() {
@@ -87,6 +106,8 @@ class App extends React.Component {
       }
 
       return <StarRating ratings={locationRatings} numberOfReviews={numberOfReviews} />;
+    } else {
+      return <div>No star ratings</div>;
     }
   }
 
@@ -100,8 +121,8 @@ class App extends React.Component {
     }
   }
 
-  allReviewsToggle(e) {
-    e.preventDefault();
+  allReviewsToggle() {
+    // e.preventDefault();
     this.setState({
       // eslint-disable-next-line react/no-access-state-in-setstate
       showAllReviews: !this.state.showAllReviews
@@ -112,7 +133,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="separation-line" />
-        <div>{this.renderRatingsComponent()}</div>
+        <div id="ratings-component">{this.renderRatingsComponent()}</div>
         <div id="reviews">{this.renderReviewComponent()}</div>
         {this.renderAllReviewsButton()}
         {this.state.showAllReviews ? (
@@ -126,4 +147,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));

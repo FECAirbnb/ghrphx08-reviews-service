@@ -206,6 +206,7 @@ html {
 
 .star-ratings-column {
   float: left;
+  position: fixed;
 }
 
 .all-reviews-rating {

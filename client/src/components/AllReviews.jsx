@@ -11,7 +11,7 @@ class AllReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      limitedReviewGreaterThan150Chars: `${this.props.review.review_body.slice(0, 150)}..`,
+      limitedReviewGreaterThan150Chars: `${this.props.review.review_body.slice(0, 150)} ... `,
       limitedReviewLessThan150Chars: this.props.review.review_body
     };
   }
@@ -20,7 +20,10 @@ class AllReviews extends React.Component {
     e.preventDefault();
     const wholeReview = this.props.review.review_body;
     this.setState({ limitedReviewGreaterThan150Chars: wholeReview });
-    e.target.style.display = 'none';
+
+    if (e.target) {
+      e.target.style.display = 'none';
+    }
   }
 
   renderer() {

@@ -14,7 +14,7 @@ const StarRating = ({
         <span>
           <img
             id="star-image"
-            src="https://i.dlpng.com/static/png/375530_preview.png"
+            src="https://pngimage.net/wp-content/uploads/2018/06/pink-star-png-1.png"
             width="20px"
             height="20px"
             alt="not loaded"

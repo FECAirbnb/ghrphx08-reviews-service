@@ -20,12 +20,12 @@ import axios from 'axios';
 
 import $ from 'jquery';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviewToRender: null,
-      locationId: 5,
+      locationId: 1,
       showAllReviews: false
     };
     // this.renderReviewComponent = this.renderReviewComponent.bind(this);
@@ -45,7 +45,6 @@ export default class App extends React.Component {
     //     });
     // }
     // getReviews();
-
     axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
@@ -148,3 +147,4 @@ export default class App extends React.Component {
 }
 
 // ReactDOM.render(<App />, document.getElementById('root'));
+export default App;

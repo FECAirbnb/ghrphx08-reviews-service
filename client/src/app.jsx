@@ -25,7 +25,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       reviewToRender: null,
-      locationId: 1,
+      locationId: 5,
       showAllReviews: false
     };
     // this.renderReviewComponent = this.renderReviewComponent.bind(this);

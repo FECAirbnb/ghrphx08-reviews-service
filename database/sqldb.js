@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 const { userSampleData } = require('./mockData.js');
 const { locationSampleData } = require('./mockData.js');

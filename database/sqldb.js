@@ -18,6 +18,10 @@ connect.connect(err => {
     console.log('Database Created');
     connect.end();
   });
+
+  // userSampleData.forEach(user => {
+  //   connect.query('CREATE TABLE IF NOT EXISTS users (id )')
+  // })
 });
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {
@@ -61,31 +65,48 @@ const Review = sequelize.define('reviews', {
   locationId: { type: Sequelize.INTEGER }
 });
 
-User.hasMany(Location);
-
 User.sync({ force: true })
   .then(() => {
     User.bulkCreate(userSampleData);
   })
-  .catch(err => {
-    console.log(err);
-  });
-
-Location.sync({ force: true })
   .then(() => {
-    Location.bulkCreate(locationSampleData);
+    Location.sync({ force: true })
+      .then(() => {
+        Location.bulkCreate(locationSampleData);
+      })
+      .then(() => {
+        Review.sync({ force: true })
+          .then(() => {
+            Review.bulkCreate(reviewSampleData);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   })
   .catch(err => {
     console.log(err);
   });
 
-User.belongsTo(Review);
-Location.belongsTo(Review);
+// Location.sync({ force: true })
+//   .then(() => {
+//     Location.bulkCreate(locationSampleData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-Review.sync({ force: true })
-  .then(() => {
-    Review.bulkCreate(reviewSampleData);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// Review.sync({ force: true })
+//   .then(() => {
+//     Review.bulkCreate(reviewSampleData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+// User.belongsTo(Review);
+// Location.belongsTo(Review);
+// User.hasMany(Location);

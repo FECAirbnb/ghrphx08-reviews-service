@@ -14,6 +14,13 @@ const connect = mysql.createConnection({
 connect.connect(err => {
   if (err) throw err;
   console.log('Connected');
+  connect.query(
+    "alter user 'root'@'localhost' identified with mysql_native_password by 'password'",
+    alterError => {
+      if (alterError) throw alterError;
+      console.log('user altered');
+    }
+  );
   connect.query('CREATE DATABASE IF NOT EXISTS StayKay', error => {
     if (error) throw error;
     console.log('Database Created');

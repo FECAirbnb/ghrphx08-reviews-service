@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 const { userSampleData } = require('./mockData.js');
 const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
+
 const connect = mysql.createConnection({
-  user: 'root',
+  user: 'root', // change to your user and password in sql
   password: 'password'
 });
 
@@ -21,6 +22,7 @@ connect.connect(err => {
 });
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {
+  // change user and password as well
   dialect: 'mysql'
 });
 
@@ -61,31 +63,48 @@ const Review = sequelize.define('reviews', {
   locationId: { type: Sequelize.INTEGER }
 });
 
-User.hasMany(Location);
-
 User.sync({ force: true })
   .then(() => {
     User.bulkCreate(userSampleData);
   })
-  .catch(err => {
-    console.log(err);
-  });
-
-Location.sync({ force: true })
   .then(() => {
-    Location.bulkCreate(locationSampleData);
+    Location.sync({ force: true })
+      .then(() => {
+        Location.bulkCreate(locationSampleData);
+      })
+      .then(() => {
+        Review.sync({ force: true })
+          .then(() => {
+            Review.bulkCreate(reviewSampleData);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   })
   .catch(err => {
     console.log(err);
   });
 
-User.belongsTo(Review);
-Location.belongsTo(Review);
+// Location.sync({ force: true })
+//   .then(() => {
+//     Location.bulkCreate(locationSampleData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-Review.sync({ force: true })
-  .then(() => {
-    Review.bulkCreate(reviewSampleData);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// Review.sync({ force: true })
+//   .then(() => {
+//     Review.bulkCreate(reviewSampleData);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+// User.belongsTo(Review);
+// Location.belongsTo(Review);
+// User.hasMany(Location);

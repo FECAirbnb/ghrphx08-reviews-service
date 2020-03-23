@@ -7,32 +7,13 @@ const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
 
 const connect = mysql.createConnection({
-  user: 'root',
-  password: 'password',
-  insecureAuth: true
+  user: 'root', // change to your user and password in sql
+  password: 'password'
 });
 
 connect.connect(err => {
   if (err) throw err;
   console.log('Connected');
-  connect.query(
-    "alter user 'root'@'localhost' identified with mysql_native_password by 'password'",
-    alterError => {
-      if (alterError) {
-        throw alterError;
-      } else {
-        console.log('user altered');
-      }
-    }
-  );
-
-  connect.query('flush privileges', flushingErr => {
-    if (flushingErr) {
-      throw flushingErr;
-    } else {
-      console.log('Flushing privileges performed.');
-    }
-  });
   connect.query('CREATE DATABASE IF NOT EXISTS StayKay', error => {
     if (error) throw error;
     console.log('Database Created');
@@ -41,6 +22,7 @@ connect.connect(err => {
 });
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {
+  // change user and password as well
   dialect: 'mysql'
 });
 

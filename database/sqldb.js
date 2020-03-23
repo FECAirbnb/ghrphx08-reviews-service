@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const { userSampleData } = require('./mockData.js');
 const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
+
 const connect = mysql.createConnection({
   user: 'root',
   password: 'password',
@@ -17,10 +18,21 @@ connect.connect(err => {
   connect.query(
     "alter user 'root'@'localhost' identified with mysql_native_password by 'password'",
     alterError => {
-      if (alterError) throw alterError;
-      console.log('user altered');
+      if (alterError) {
+        throw alterError;
+      } else {
+        console.log('user altered');
+      }
     }
   );
+
+  connect.query('flush privileges', flushingErr => {
+    if (flushingErr) {
+      throw flushingErr;
+    } else {
+      console.log('Flushing privileges performed.');
+    }
+  });
   connect.query('CREATE DATABASE IF NOT EXISTS StayKay', error => {
     if (error) throw error;
     console.log('Database Created');

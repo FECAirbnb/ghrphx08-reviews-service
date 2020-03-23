@@ -7,7 +7,8 @@ const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
 const connect = mysql.createConnection({
   user: 'root',
-  password: 'password'
+  password: 'password',
+  insecureAuth: true
 });
 
 connect.connect(err => {
@@ -18,10 +19,6 @@ connect.connect(err => {
     console.log('Database Created');
     connect.end();
   });
-
-  // userSampleData.forEach(user => {
-  //   connect.query('CREATE TABLE IF NOT EXISTS users (id )')
-  // })
 });
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {

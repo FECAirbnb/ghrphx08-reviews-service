@@ -18,15 +18,17 @@
 ## Getting Started
 
 From within the root directory, in your terminal run the following commands in order.
-- [ ] npm install
-- [ ] npm install -g webpack
-- [ ] npm run db:setup (if there is an error refer to database initialization below)
-- [ ] npm run react-dev
-- [ ] npm start
+
+- [ ] `npm install`
+- [ ] `npm install -g webpack`
+- [ ] `npm run db:setup` (if there is an error refer to database initialization below)
+- [ ] `npm run react-dev`
+- [ ] `npm start`
 
 Go to http://localhost:3000
 
 ## Database initialization
+
 - [ ] open mysql in the terminal
 - [ ] use StayKay
 - [ ] show tables
@@ -46,3 +48,13 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - React
 
 ## Development
+
+The reviews microservice displays the reviews of users on the the profile page of a housing option is displayed, similar to Airbnb.
+
+The client will need to obtain reviews of a location by location id. Each review element on the display page includes the first name of the user who posted the review, their join date, user profile picture, and the review body itself.
+
+The database chosen for this project is MySQLused with an ORM, Sequelize. Sequelize was chosen to minimize development time needed to create a reusable model interface. This service uses a SQL database because the service of reviews is relational to user information and location information and MySQL guarantees of referential integrity between different tables with minimal development overhead.
+
+[Review database schema](./dbschema.png)
+
+GET /api/reviews/:locationname => Retrieve reviews related to the location name, if successful, will send a 200 header, Content type of the response is text/plain.

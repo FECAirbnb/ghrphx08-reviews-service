@@ -1,7 +1,5 @@
 # StayKay
 
-> Project description
-
 ## Related Projects
 
 - https://github.com/StayKay/proxy-server

@@ -6,6 +6,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import styles from './component.css';
 
 class AllReviews extends React.Component {
   constructor(props) {
@@ -35,8 +36,8 @@ class AllReviews extends React.Component {
         {this.state.limitedReviewGreaterThan150Chars}
         <a
           href=""
-          className="read-more-btn"
-          style={{ display: 'inline-block' }}
+          className={styles['read-more-btn']}
+          // style={{ display: 'inline-block' }}
           onClick={e => this.readMoreHandler(e)}
         >
           read more
@@ -47,21 +48,16 @@ class AllReviews extends React.Component {
 
   render() {
     return (
-      <div className="all-reviews-display">
-        <div className="user-info">
-          <img
-            className="user-picture"
-            src={this.props.review.profile_picture}
-            width="50"
-            height="50"
-          />
-          <div className="user-name">
+      <div className={styles['all-reviews-display']}>
+        <div className={styles['user-info']}>
+          <img className={styles['user-picture']} src={this.props.review.profile_picture} />
+          <div className={styles['user-name']}>
             {this.props.review.first_name}
-            <div className="review-date">{this.props.review.review_date}</div>
+            <div className={styles['review-date']}>{this.props.review.review_date}</div>
           </div>
         </div>
-        <div className="review-info">
-          <div className="all-review-body">
+        <div className={styles['review-info']}>
+          <div className={styles['all-review-body']}>
             <div>{this.renderer()}</div>
           </div>
         </div>

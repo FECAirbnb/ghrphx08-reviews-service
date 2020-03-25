@@ -17,8 +17,7 @@ import Reviews from './components/Reviews.jsx';
 import StarRating from './components/StarRating.jsx';
 import Popup from './components/Popup.jsx';
 import axios from 'axios';
-
-import $ from 'jquery';
+import styles from './components/component.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,17 +33,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // async function getReviews() {
-    //   await axios
-    //     .get(`/api/reviews/${this.state.locationId}`)
-    //     .then(result => {
-    //       this.setState({ reviewToRender: result.data });
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
-    // getReviews();
     axios
       .get(`/api/reviews/${this.state.locationId}`)
       .then(result => {
@@ -53,13 +41,6 @@ class App extends React.Component {
       .catch(err => {
         console.log(err);
       });
-    // $.ajax({
-    //   type: 'GET',
-    //   url: `/api/reviews/${this.state.locationId}`,
-    //   success: result => {
-    //     this.setState({ reviewToRender: result });
-    //   }
-    // });
   }
 
   renderReviewComponent() {
@@ -113,7 +94,11 @@ class App extends React.Component {
   renderAllReviewsButton() {
     if (this.state.reviewToRender !== null) {
       return (
-        <button id="show-all-reviews" type="button" onClick={e => this.allReviewsToggle(e)}>
+        <button
+          className={styles['show-all-reviews']}
+          type="button"
+          onClick={e => this.allReviewsToggle(e)}
+        >
           Show all {this.state.reviewToRender.length} reviews
         </button>
       );
@@ -131,9 +116,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="separation-line" />
-        <div id="ratings-component">{this.renderRatingsComponent()}</div>
-        <div id="reviews">{this.renderReviewComponent()}</div>
+        <div className={styles['separation-line']} />
+        <div id={styles['ratings-component']}>{this.renderRatingsComponent()}</div>
+        <div id={styles.reviews}>{this.renderReviewComponent()}</div>
         {this.renderAllReviewsButton()}
         {this.state.showAllReviews ? (
           <Popup

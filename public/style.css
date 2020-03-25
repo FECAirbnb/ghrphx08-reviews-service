@@ -1,11 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Inter|Open+Sans&display=swap');
-body,
-html {
-  font-family: Inter;
-  height: 100%;
-  margin: auto;
-  overflow: scroll;
-}
 
 #reviews-here {
   display: flex;

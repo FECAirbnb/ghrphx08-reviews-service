@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
+import styles from './component.css';
 
 const StarRating = ({
   ratings: { overall, cleanliness, communication, checkin, accuracy, location, value },
@@ -10,10 +11,10 @@ const StarRating = ({
 }) => {
   return (
     <div>
-      <div id="rating-average">
+      <div id={styles['rating-average']}>
         <span>
           <img
-            id="star-image"
+            id={styles['star-image']}
             src="https://pngimage.net/wp-content/uploads/2018/06/pink-star-png-1.png"
             width="20px"
             height="20px"
@@ -22,46 +23,46 @@ const StarRating = ({
           {overall} ({numberOfReviews} reviews)
         </span>
       </div>
-      <div id="star-rating-bars">
-        <div className="rating-bar">
-          <span className="rating-titles">Cleanliness</span>
-          <span className="rating-value">{cleanliness}</span>
-          <div className="progress-bar">
+      <div id={styles['star-rating-bars']}>
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Cleanliness</span>
+          <span className={styles['rating-value']}>{cleanliness}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${cleanliness * 2}em` }} />
           </div>
         </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Accuracy</span>
-          <span className="rating-value">{accuracy}</span>
-          <div className="progress-bar">
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Accuracy</span>
+          <span className={styles['rating-value']}>{accuracy}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${accuracy * 2}em` }} />
           </div>
         </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Communication</span>
-          <span className="rating-value">{communication}</span>
-          <div className="progress-bar">
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Communication</span>
+          <span className={styles['rating-value']}>{communication}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${communication * 2}em` }} />
           </div>
         </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Location</span>
-          <span className="rating-value">{location}</span>
-          <div className="progress-bar">
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Location</span>
+          <span className={styles['rating-value']}>{location}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${location * 2}em` }} />
           </div>
         </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Check-in</span>
-          <span className="rating-value">{checkin}</span>
-          <div className="progress-bar">
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Check-in</span>
+          <span className={styles['rating-value']}>{checkin}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${checkin * 2}em` }} />
           </div>
         </div>
-        <div className="rating-bar">
-          <span className="rating-titles">Value</span>
-          <span className="rating-value">{value}</span>
-          <div className="progress-bar">
+        <div className={styles['rating-bar']}>
+          <span className={styles['rating-titles']}>Value</span>
+          <span className={styles['rating-value']}>{value}</span>
+          <div className={styles['progress-bar']}>
             <div style={{ width: `${value * 2}em` }} />
           </div>
         </div>

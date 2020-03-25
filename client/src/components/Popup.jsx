@@ -8,6 +8,7 @@
 import React from 'react';
 import AllReviews from './AllReviews.jsx';
 import AllReviewsStars from './AllReviewsStars.jsx';
+import styles from './component.css';
 
 class Popup extends React.Component {
   constructor(props) {
@@ -58,20 +59,20 @@ class Popup extends React.Component {
 
   render() {
     return (
-      <div className="popup">
-        <div className="inner-popup">
+      <div className={styles.popup}>
+        <div className={styles['inner-popup']}>
           <button
-            id="close-all-reviews"
+            id={styles['close-all-reviews']}
             type="button"
             onClick={() => this.props.allReviewsToggle()}
           >
             x
           </button>
-          <div className="reviews-ratings-container">
-            <div className="star-ratings">
-              <div className="star-ratings-column">{this.renderRatingsComponent()}</div>
+          <div className={styles['reviews-ratings-container']}>
+            <div className={styles['star-ratings']}>
+              <div className={styles['star-ratings-column']}>{this.renderRatingsComponent()}</div>
             </div>
-            <div className="reviews">
+            <div className={styles.reviews}>
               {this.state.reviewToRender.map((review, mappingKey) => {
                 return <AllReviews review={review} key={mappingKey} />;
               })}

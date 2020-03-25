@@ -28,10 +28,10 @@ class Reviews extends React.Component {
 
   renderer() {
     if (this.props.review.review_body.length <= 150) {
-      return <div>{this.props.review.review_body}</div>;
+      return <div className={styles['review-text']}>{this.props.review.review_body}</div>;
     }
     return (
-      <div>
+      <div className={styles['review-text']}>
         {this.state.limitedReviewGreaterThan150Chars}
         <a
           href=""

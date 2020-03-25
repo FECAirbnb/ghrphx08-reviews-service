@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inter|Open+Sans&display=swap');
 
 .user-info {
+  color: black;
   display: flex;
   flex-direction: row;
   width: 300px;
@@ -8,6 +9,7 @@
 }
 
 .review-info {
+  color: black;
   width: 350px;
 }
 
@@ -38,6 +40,7 @@
 }
 
 .review-body {
+  color: black;
   font-family: Inter;
   font-size: 15px;
   font-weight: lighter;
@@ -45,6 +48,7 @@
 }
 
 .single-review {
+  color: black;
   margin-top: 2em;
   margin-right: 1.5em;
   flex: 50%;
@@ -57,7 +61,12 @@
   column-gap: 125px;
 }
 
+.review-text {
+  color: black;
+}
+
 #reviews-here {
+  color: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -98,7 +107,8 @@
 }
 
 #rating-average {
-  font-weight: bolder;
+  color: black;
+  font-weight: 900;
   font-size: 20px;
 }
 
@@ -113,6 +123,7 @@
 }
 
 .rating-titles {
+  color: black;
   font-size: 15px;
 }
 
@@ -236,10 +247,12 @@
 }
 
 .all-reviews-star-title {
+  color: black;
   font-size: 13px;
   margin-right: 22px;
 }
 .all-reviews-star-value {
+  color: black;
   float: right;
   margin-left: 10px;
   font-weight: bold;
@@ -261,6 +274,7 @@
 }
 
 #all-rating-average {
+  color: black;
   font-weight: 900;
   font-size: 30px;
   margin-bottom: 30px;

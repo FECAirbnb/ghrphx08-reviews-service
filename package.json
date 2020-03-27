@@ -11,7 +11,8 @@
     "test": "jest",
     "db:setup": "node ./database/sqldb.js",
     "start": "nodemon ./server/index.js",
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack",
+    "all": "node ./database/dbCreate.js && node ./database/sqldb.js && webpack && node ./server/index.js",
     "coverage": "jest --coverage"
   },
   "dependencies": {
@@ -39,7 +40,6 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",

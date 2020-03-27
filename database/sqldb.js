@@ -1,25 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 const { userSampleData } = require('./mockData.js');
 const { locationSampleData } = require('./mockData.js');
 const { reviewSampleData } = require('./mockData.js');
-
-const connect = mysql.createConnection({
-  user: 'root', // change to your user and password in sql
-  password: 'password'
-});
-
-connect.connect(err => {
-  if (err) throw err;
-  console.log('Connected');
-  connect.query('CREATE DATABASE IF NOT EXISTS StayKay', error => {
-    if (error) throw error;
-    console.log('Database Created');
-    connect.end();
-  });
-});
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {
   // change user and password as well

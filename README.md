@@ -21,9 +21,7 @@ From within the root directory, in your terminal run the following commands in o
 
 - [ ] `npm install`
 - [ ] `npm install -g webpack`
-- [ ] `npm run db:setup` twice (if there is an error refer to database initialization below)
-- [ ] `npm run react-dev`
-- [ ] `npm start`
+- [ ] `npm run all`
 
 Go to http://localhost:3000
 

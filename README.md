@@ -1,7 +1,5 @@
 # StayKay
 
-> Project description
-
 ## Related Projects
 
 - https://github.com/StayKay/proxy-server
@@ -20,8 +18,10 @@
 From within the root directory, in your terminal run the following commands in order.
 
 - [ ] `npm install`
+
 - [ ] `npm install -g webpack`
 - [ ] `npm run all`
+
 
 Go to http://localhost:3000
 

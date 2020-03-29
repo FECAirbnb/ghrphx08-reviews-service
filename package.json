@@ -9,10 +9,9 @@
   },
   "scripts": {
     "test": "jest",
-    "db:setup": "node ./database/sqldb.js",
-    "start": "nodemon ./server/index.js",
-    "react-dev": "webpack",
-    "all": "node ./database/dbCreate.js && node ./database/sqldb.js && webpack && node ./server/index.js",
+    "db:setup": "node ./database/dbCreate.js && node ./database/sqldb.js",
+    "react-dev": "webpack -d --watch",
+    "start": "node ./database/dbCreate.js && node ./database/sqldb.js && webpack -d && node ./server/index.js",
     "coverage": "jest --coverage"
   },
   "dependencies": {

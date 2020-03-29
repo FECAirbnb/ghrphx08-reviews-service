@@ -3,7 +3,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 const path = require('path');
 const model = require('./model/index.js');
 
@@ -21,11 +21,6 @@ app.get('/api/reviews/:locationId', (req, res) => {
     res.send(result);
   });
 });
-
-// app.get('/app.js', (req, res) => {
-//   console.log(req);
-//   res.send('hi');
-// });
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT}`);

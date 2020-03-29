@@ -7,7 +7,6 @@ const { reviewSampleData } = require('./mockData.js');
 
 const sequelize = new Sequelize('StayKay', 'root', 'password', {
   // change user and password as well
-  host: 'database',
   dialect: 'mysql'
 });
 

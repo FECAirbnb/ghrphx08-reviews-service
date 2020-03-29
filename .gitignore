@@ -19,7 +19,8 @@ coverage
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
-
+Dockerfile
+docker-compose.yml
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/

@@ -34,7 +34,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`/api/reviews/${this.state.locationId}`)
+      .get(`/api/reviews/1`)
       .then(result => {
         this.setState({ reviewToRender: result.data });
       })

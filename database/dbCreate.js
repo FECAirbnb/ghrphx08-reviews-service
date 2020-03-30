@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 const connect = mysql.createConnection({
   host: 'database',

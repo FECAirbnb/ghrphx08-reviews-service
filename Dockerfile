@@ -5,6 +5,6 @@ WORKDIR /app
 COPY . /app
 
 RUN npm install
-RUN npm install mysql2
+RUN npm install -g mysql2
 
 EXPOSE 3000

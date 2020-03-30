@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
     expose:
       - 3306
-    image: mysql:latest
+    image: mysql:5.7
   app:
     build:
       context: .

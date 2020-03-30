@@ -115,7 +115,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id={styles['whole-app']}>
         <div className={styles['separation-line']} />
         <div id={styles['ratings-component']}>{this.renderRatingsComponent()}</div>
         <div id={styles.reviews}>{this.renderReviewComponent()}</div>

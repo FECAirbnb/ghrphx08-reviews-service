@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Inter|Open+Sans&display=swap');
 
+#whole-app {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
 .user-info {
   color: black;
   display: flex;

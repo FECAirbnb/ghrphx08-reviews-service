@@ -6,21 +6,27 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import AllReviews from './AllReviews.jsx';
-import AllReviewsStars from './AllReviewsStars.jsx';
+import Loadable from 'react-loadable';
 import styles from './component.css';
 
-class Popup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviewToRender: this.props.reviewToRender
-    };
+const AllReviews = Loadable({
+  loader: () => import('./AllReviews.jsx'),
+  loading() {
+    return <div></div>;
   }
+});
 
-  renderRatingsComponent() {
-    if (this.state.reviewToRender !== null) {
-      const numberOfReviews = this.state.reviewToRender.length;
+const AllReviewsStars = Loadable({
+  loader: () => import('./AllReviewsStars.jsx'),
+  loading() {
+    return <div></div>;
+  }
+});
+
+const Popup = ({ reviewToRender, allReviewsToggle }) => {
+  const renderRatingsComponent = () => {
+    if (reviewToRender !== null) {
+      const numberOfReviews = reviewToRender.length;
       const locationRatings = {
         overall: 0,
         cleanliness: 0,
@@ -31,7 +37,7 @@ class Popup extends React.Component {
         value: 0
       };
 
-      this.state.reviewToRender.forEach(review => {
+      reviewToRender.forEach(review => {
         locationRatings.overall += review.overall_star_rating;
         locationRatings.cleanliness += review.cleanliness_rating;
         locationRatings.communication += review.communication_rating;
@@ -55,33 +61,27 @@ class Popup extends React.Component {
 
       return <AllReviewsStars ratings={locationRatings} numberOfReviews={numberOfReviews} />;
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className={styles.popup}>
-        <div className={styles['inner-popup']}>
-          <button
-            id={styles['close-all-reviews']}
-            type="button"
-            onClick={() => this.props.allReviewsToggle()}
-          >
-            x
-          </button>
-          <div className={styles['reviews-ratings-container']}>
-            <div className={styles['star-ratings']}>
-              <div className={styles['star-ratings-column']}>{this.renderRatingsComponent()}</div>
-            </div>
-            <div className={styles.reviews}>
-              {this.state.reviewToRender.map((review, mappingKey) => {
-                return <AllReviews review={review} key={mappingKey} />;
-              })}
-            </div>
+  return (
+    <div className={styles.popup}>
+      <div className={styles['inner-popup']}>
+        <button id={styles['close-all-reviews']} type="button" onClick={allReviewsToggle}>
+          x
+        </button>
+        <div className={styles['reviews-ratings-container']}>
+          <div className={styles['star-ratings']}>
+            <div className={styles['star-ratings-column']}>{renderRatingsComponent()}</div>
+          </div>
+          <div className={styles.reviews}>
+            {reviewToRender.map((review, mappingKey) => {
+              return <AllReviews review={review} key={mappingKey} />;
+            })}
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Popup;

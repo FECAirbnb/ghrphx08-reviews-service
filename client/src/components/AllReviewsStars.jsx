@@ -70,11 +70,3 @@ const AllReviewsStars = ({
 );
 
 export default AllReviewsStars;
-
-// overall={this.state.overallRating}
-// cleanliness={this.state.cleanlinessRating}
-// communication={this.state.communicationRating}
-// checkin={this.state.checkInRating}
-// accuracy={this.state.accuracyRating}
-// location={this.state.locationRating}
-// value={this.state.valueRating}

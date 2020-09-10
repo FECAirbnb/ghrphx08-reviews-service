@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Inter|Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+#app {
+  display: inline-grid;
+  flex-wrap: wrap;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  font-family: Inter;
+}
 
 .user-info {
   color: black;
@@ -176,6 +190,10 @@
 
 .reviews-ratings-container {
   padding: 55px;
+}
+
+.all-reviews-button {
+  place-self: center;
 }
 
 #close-all-reviews {

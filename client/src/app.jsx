@@ -12,55 +12,65 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
-import Reviews from './components/Reviews.jsx';
-import StarRating from './components/StarRating.jsx';
-import Popup from './components/Popup.jsx';
+import Loadable from 'react-loadable';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styles from './components/component.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviewToRender: null,
-      locationId: 5,
-      showAllReviews: false
-    };
-    // this.renderReviewComponent = this.renderReviewComponent.bind(this);
-    // this.renderRatingsComponent = this.renderRatingsComponent.bind(this);
-    this.allReviewsToggle = this.allReviewsToggle.bind(this);
+const ReviewsComponent = Loadable({
+  loader: () => import('./components/Reviews.jsx'),
+  loading() {
+    return <div></div>;
   }
+});
+const StarRating = Loadable({
+  loader: () => import('./components/StarRating.jsx'),
+  loading() {
+    return <div></div>;
+  }
+});
+const Popup = Loadable({
+  loader: () => import('./components/Popup.jsx'),
+  loading() {
+    return <div></div>;
+  }
+});
 
-  componentDidMount() {
+const App = () => {
+  const [reviewToRender, setReviewToRender] = useState(null);
+  const [locationId, setLocationId] = useState(5);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+
+  useEffect(() => {
     axios
-      .get(`/api/reviews/${this.state.locationId}`)
+      .get(`/api/reviews/${locationId}`)
       .then(result => {
-        this.setState({ reviewToRender: result.data });
+        setReviewToRender(result.data);
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  }, []);
 
-  renderReviewComponent() {
-    if (this.state.reviewToRender === null) {
+  const renderReviewComponent = () => {
+    if (reviewToRender === null) {
       return <div>No Reviews</div>;
     }
     let reviewDisplayLimit = 6;
-    return this.state.reviewToRender.map((review, mapKey) => {
+    return reviewToRender.map((review, mapKey) => {
       reviewDisplayLimit -= 1;
       if (reviewDisplayLimit >= 0) {
-        return <Reviews review={review} key={mapKey} />;
+        return <ReviewsComponent review={review} key={mapKey} />;
       } else {
         return;
       }
     });
-  }
+  };
 
-  renderRatingsComponent() {
-    if (this.state.reviewToRender !== null) {
-      const numberOfReviews = this.state.reviewToRender.length;
+  const renderRatingsComponent = () => {
+    if (reviewToRender !== null) {
+      const numberOfReviews = reviewToRender.length;
       const locationRatings = {
         overall: 0,
         cleanliness: 0,
@@ -71,7 +81,7 @@ class App extends React.Component {
         value: 0
       };
 
-      this.state.reviewToRender.forEach(review => {
+      reviewToRender.forEach(review => {
         locationRatings.overall += review.overall_star_rating;
         locationRatings.cleanliness += review.cleanliness_rating;
         locationRatings.communication += review.communication_rating;
@@ -89,47 +99,40 @@ class App extends React.Component {
     } else {
       return <div>No star ratings</div>;
     }
-  }
+  };
 
-  renderAllReviewsButton() {
-    if (this.state.reviewToRender !== null) {
+  const renderAllReviewsButton = () => {
+    if (reviewToRender !== null) {
       return (
         <button
           className={styles['show-all-reviews']}
           type="button"
-          onClick={e => this.allReviewsToggle(e)}
+          onClick={e => allReviewsToggle(e)}
         >
-          Show all {this.state.reviewToRender.length} reviews
+          Show all {reviewToRender.length} reviews
         </button>
       );
     }
-  }
+  };
 
-  allReviewsToggle() {
-    // e.preventDefault();
-    this.setState({
-      // eslint-disable-next-line react/no-access-state-in-setstate
-      showAllReviews: !this.state.showAllReviews
-    });
-  }
+  const allReviewsToggle = e => {
+    e.preventDefault();
+    setShowAllReviews(!showAllReviews);
+  };
 
-  render() {
-    return (
-      <div>
-        <div className={styles['separation-line']} />
-        <div id={styles['ratings-component']}>{this.renderRatingsComponent()}</div>
-        <div id={styles.reviews}>{this.renderReviewComponent()}</div>
-        {this.renderAllReviewsButton()}
-        {this.state.showAllReviews ? (
-          <Popup
-            reviewToRender={this.state.reviewToRender}
-            allReviewsToggle={this.allReviewsToggle}
-          />
-        ) : null}
-      </div>
-    );
-  }
-}
+  return (
+    <div id={styles.app}>
+      <div className={styles['separation-line']} />
+      <div id={styles['ratings-component']}>{renderRatingsComponent()}</div>
+      <div id={styles.reviews}>{renderReviewComponent()}</div>
+      <div className={styles['all-reviews-button']}>{renderAllReviewsButton()}</div>
+      {showAllReviews ? (
+        <Popup reviewToRender={reviewToRender} allReviewsToggle={allReviewsToggle} />
+      ) : null}
+    </div>
+  );
+};
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-export default App;
+ReactDOM.render(<App />, document.getElementById('reviews-here'));
+
+// export default App;

@@ -1,19 +1,23 @@
 /* eslint-disable no-path-concat */
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, '/client/src/renderComponent.jsx'),
+  mode: 'development',
+  // entry: path.join(__dirname, '/client/src/renderComponent.jsx'),
+  entry: path.join(__dirname, '/client/src/app.jsx'),
+  output: {
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/public/dist')
+  },
   module: {
     rules: [
       {
         test: [/\.jsx$/],
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
-          }
-        }
+        use: ['babel-loader']
       },
       {
         test: /\.css$/i,
@@ -30,8 +34,13 @@ module.exports = {
       }
     ]
   },
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '/public/dist')
-  }
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      title: 'reviews-service',
+      filename: './index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin()
+  ]
 };
